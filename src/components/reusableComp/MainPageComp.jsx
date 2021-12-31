@@ -31,6 +31,10 @@ const useStyles = makeStyles(() => ({
             width: '1800px',
             //backgroundColor: 'red'
         },
+        "@media (max-width: 1366px)": {
+            minWidth: '300px',
+            //backgroundColor: 'red'
+        },
         "@media (max-width: 1440px)": {
             maxWidth: '250px',
         },
@@ -73,6 +77,11 @@ const useStyles = makeStyles(() => ({
             marginLeft : '0px'
             //backgroundColor : 'red'
        },
+       "@media (max-width: 1366px)": {
+            width: '400px',
+            paddingRight : '-20px',
+            //backgroundColor : 'red'
+       },
        "@media (max-width: 1440px)": {
            maxWidth: '300px',
            marginLeft: '0px',
@@ -83,6 +92,7 @@ const useStyles = makeStyles(() => ({
            marginLeft: '0px',
            //backgroundColor : 'red'
        },
+       
     },
     icon : {
         fontSize: '50px',
@@ -186,6 +196,10 @@ const useStyles = makeStyles(() => ({
             fontSize: '20px',
             paddingLeft: '25px',
         },
+        "@media (max-width: 1366px)": {
+            fontSize: '20px',
+            marginLeft: '30px',
+        },
         "@media (max-width: 1440px)": {
             fontSize: '18px',
             paddingLeft: '60px',
@@ -226,7 +240,7 @@ const useStyles = makeStyles(() => ({
     }
 }))
 
-const MainPageComp = () => {
+const MainPageComp = ({name , count}) => {
     const classes = useStyles();
     return (
         <>
@@ -238,8 +252,8 @@ const MainPageComp = () => {
                         </Grid>
                         <Grid item xs={6}>
                             <Box className={classes.rightGrid} >
-                                <Typography className={classes.text} >Number</Typography>
-                                <Typography className={classes.boldText} >150GB</Typography>
+                                <Typography className={classes.text} >{name}</Typography>
+                                <Typography className={classes.boldText} >{count}</Typography>
                             </Box>
                         </Grid>
                 </Grid>
@@ -249,7 +263,7 @@ const MainPageComp = () => {
                     startIcon = {
                         <UpdateIcon className={classes.iconNew} />
                     }  className={classes.btn}>
-                         Update Now
+                         Click to View
                     </Button>
             </Box>
         </>

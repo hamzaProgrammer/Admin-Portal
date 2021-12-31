@@ -105,12 +105,11 @@ const Home = () => {
                 <Grid item xs={12} style={{backgroundColor: '#F7F7F8' , marginTop: '60px' }} >
                     <Drawer/>
                     <Box className={classes.root} >
-                        <ResuableComp/>
-                        <ResuableComp/>
-                        <ResuableComp/>
-                        <ResuableComp/>
+                        <ResuableComp name="Products" count="300+" />
+                        <ResuableComp name="Categories" count="25+" />
+                        <ResuableComp name="All Order" count="120+" />
                     </Box>
-                    <Grid container className={classes.charts}>
+                    {/* <Grid container className={classes.charts}>
                         <Grid item xs={12} md={7.65} className={classes.lineChart} >
                             <LineChart/>
                         </Grid>
@@ -121,13 +120,13 @@ const Home = () => {
                                <PieChart/>
                             </Box>
                         </Grid>
-                    </Grid>
+                    </Grid> */}
 
                     <Grid container className={classes.chartsLower}>
-                        <Grid item xs={12} md={5.65} className={classes.lineChart} >
-                            <BarChart/>
+                        <Grid item xs={0} md={2} className={classes.lineChart} >
+                            {/* <BarChart/> */}
                         </Grid>
-                        <Grid item xs={12} md={5.95}   >
+                        <Grid item xs={12} md={12}   >
                             <TasksSec  />
                         </Grid>
                     </Grid>

@@ -11,22 +11,26 @@ import {
 } from '@mui/material';
 import ViewSidebarIcon from '@mui/icons-material/ViewSidebar';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import TableRowsIcon from '@mui/icons-material/TableRows';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import {Link} from 'react-router-dom'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+
 
 const useStyles = makeStyles(() => ({
     root: {
         background: 'url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ02f7Eb3cXfYROjsKIiKilLi-YQcXWR3PxhM95bxRL5-t1OjM71WeqjHL-F6vkcYRG4Ws&usqp=CAU)',
-        minHeight: '90vh',
+        minHeight: '89.7vh',
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
         backgroundRepeat: 'no-repeat',
         position: 'sticky',
         top: 0,
         bottom: 0,
-        width : '229px'
+        width : '210px'
     },
     mainList: {
         marginLeft : '-20px',
@@ -84,7 +88,18 @@ const useStyles = makeStyles(() => ({
         backgroundColor: 'transparent',
         marginTop: '220px'
     },
+    accor : {
+        backgroundColor : 'transparent',
+        maxWidth : '220px',
+        paddingleft: '20px',
+        marginLeft : '10px',
+        color: '#FFFFFF',
+        fontSize : '20px',
+        borderBottom: '1px solid #c8d6e5'
+    }
 }))
+
+
 
 const Sidebar = () => {
     const classes= useStyles();
@@ -108,80 +123,183 @@ const Sidebar = () => {
                     </ListItemButton>
                 </ListItem>
 
-                <List  className = {
-                        classes.mainList
-                    } >
-                    <ListItem  >
-                        <ListItemButton  className = {
-                            classes.listSingle
+                    <List  className = {
+                            classes.mainList
                         } >
-                                <ListItemIcon  className = {
-                                    classes.listIcon
-                                } >
-                                    <DashboardIcon  className={classes.ListOrigIcon} />
-                                </ListItemIcon>
-                                <Link to="/" style={{textDecoration : 'none'}} >
-                            <ListItemText >
-                                <Typography variant="text" className={classes.Listtext} >Dashboard</Typography>
-                            </ListItemText>
-                        </Link>
-                        </ListItemButton>
-                    </ListItem>
-
-                    <ListItem  >
-                        <ListItemButton  className = {
-                            classes.listSingle
-                        } >
-                                <ListItemIcon  className = {
-                                    classes.listIcon
-                                } >
-                                    <AccountCircleIcon  className={classes.ListOrigIcon} />
-                                </ListItemIcon>
-                            <Link to="/profile" style={{textDecoration : 'none'}} >
-                            <ListItemText >
-                                <Typography variant="text" className={classes.Listtext} >user Profile</Typography>
-                            </ListItemText>
+                        <ListItem  >
+                            <ListItemButton  className = {
+                                classes.listSingle
+                            } >
+                                    <ListItemIcon  className = {
+                                        classes.listIcon
+                                    } >
+                                        <DashboardIcon  className={classes.ListOrigIcon} />
+                                    </ListItemIcon>
+                                    <Link to="/" style={{textDecoration : 'none'}} >
+                                <ListItemText >
+                                    <Typography variant="text" className={classes.Listtext} >Dashboard</Typography>
+                                </ListItemText>
                             </Link>
-                        </ListItemButton>
-                    </ListItem>
+                            </ListItemButton>
+                        </ListItem>
 
-                    <ListItem  >
-                        <ListItemButton  className = {
-                            classes.listSingle
-                        } >
-                                <ListItemIcon  className = {
-                                    classes.listIcon
-                                } >
-                                    <TableRowsIcon  className={classes.ListOrigIcon} />
-                                </ListItemIcon>
-                                <Link to="/dataTables" style={{textDecoration : 'none'}} >
-                            <ListItemText >
-                                <Typography variant="text"  className={classes.Listtext} >table list</Typography>
-                            </ListItemText>
-                        </Link>
-                        </ListItemButton>
-                    </ListItem>
+                        <ListItem  >
+                            <ListItemButton  className = {
+                                classes.listSingle
+                            } >
+                                    <ListItemIcon  className = {
+                                        classes.listIcon
+                                    } >
+                                        <AccountCircleIcon  className={classes.ListOrigIcon} />
+                                    </ListItemIcon>
+                                <Link to="/profile" style={{textDecoration : 'none'}} >
+                                <ListItemText >
+                                    <Typography variant="text" className={classes.Listtext} >user Profile</Typography>
+                                </ListItemText>
+                                </Link>
+                            </ListItemButton>
+                        </ListItem>
 
-                    <ListItem  >
-                        <ListItemButton  className = {
-                            classes.listSingle
-                        } >
-                                <ListItemIcon  className = {
-                                    classes.listIcon
-                                } >
-                                    <AddLocationAltIcon  className={classes.ListOrigIcon} />
-                                </ListItemIcon>
-                                <Link to="/map" style={{textDecoration : 'none'}} >
-                            <ListItemText >
-                                <Typography variant="text" className={classes.Listtext} >Maps</Typography>
-                            </ListItemText>
-                        </Link>
-                        </ListItemButton>
-                    </ListItem>
-                </List>
+                        <Accordion  className = {
+                                    classes.accor
+                                } elevation={0}  >
+                                    <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon style={{color : '#FFFFFF'}} />}
+                                        aria-controls="panel1a-content"
+                                        id="panel1a-header"
+                                        >
+                                    <Typography style={{paddingLeft : '20px' , textTransform : 'uppercase' , fontWeight: 600 , fontSize : '15px'}} >Users</Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails  style = {
+                                                {
+                                                    marginTop: '-30px',
+                                                }
+                                            } >
+                                            <ListItem  >
+                                                <ListItemButton  className = {
+                                                    classes.listSingle
+                                                }  >
+                                                        <Link  to = "/admin/users/AllUsers"
+                                                        style = {
+                                                            {
+                                                                textDecoration: 'none'
+                                                            }
+                                                        } >
+                                                    <ListItemText >
+                                                        <Typography variant="text" className={classes.Listtext} style={{fontSize : '12px' , paddingLeft : '30px'  }}  >All Users</Typography>
+                                                    </ListItemText>
+                                                </Link>
+                                                </ListItemButton>
+                                            </ListItem>
+                                    </AccordionDetails>
+                            </Accordion>
+
+                        <Accordion  className = {
+                                    classes.accor
+                                } elevation={0}  >
+                                    <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon style={{color : '#FFFFFF'}} />}
+                                        aria-controls="panel2a-content"
+                                        id="panel1a-header"
+                                        >
+                                    <Typography style={{paddingLeft : '20px' , textTransform : 'uppercase' , fontWeight: 600 , fontSize : '15px'}} >categories</Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails  style = {
+                                                {
+                                                    marginTop: '-30px',
+                                                }
+                                            } >
+                                            <ListItem >
+                                                <ListItemButton  className = {
+                                                    classes.listSingle
+                                                } >
+                                                        <Link Link to = "/admin/category/allCategories"
+                                                        style = {
+                                                            {
+                                                                textDecoration: 'none'
+                                                            }
+                                                        } >
+                                                    <ListItemText >
+                                                        <Typography variant="text" className={classes.Listtext} style={{fontSize : '12px' , paddingLeft : '30px'  }} >All Categories</Typography>
+                                                    </ListItemText>
+                                                </Link>
+                                                </ListItemButton>
+                                            </ListItem>
+
+                                            <ListItem  >
+                                            <ListItemButton  className = {
+                                                classes.listSingle
+                                            } >
+                                                    <Link  to = "/admin/category/addNew"
+                                                    style = {
+                                                        {
+                                                            textDecoration: 'none'
+                                                        }
+                                                    } >
+                                                <ListItemText >
+                                                    <Typography variant="text" className={classes.Listtext} style={{fontSize : '12px' , paddingLeft : '30px'  }} >Add New</Typography>
+                                                </ListItemText>
+                                            </Link>
+                                            </ListItemButton>
+                                        </ListItem>
+                                    </AccordionDetails>
+                            </Accordion>
+
+                        <Accordion  className = {
+                                    classes.accor
+                                } elevation={0}  >
+                                    <AccordionSummary
+                                        expandIcon={<ExpandMoreIcon style={{color : '#FFFFFF'}} />}
+                                        aria-controls="panel2a-content"
+                                        id="panel1a-header"
+                                        >
+                                    <Typography style={{paddingLeft : '20px' , textTransform : 'uppercase' , fontWeight: 600 , fontSize : '15px'}} >Products</Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails  style = {
+                                                {
+                                                    marginTop: '-30px',
+                                                }
+                                            } >
+                                        <ListItem  >
+                                                <ListItemButton  className = {
+                                                    classes.listSingle
+                                                } >
+                                                        <Link  to = "/admin/products/allProducts"
+                                                        style = {
+                                                            {
+                                                                textDecoration: 'none'
+                                                            }
+                                                        } >
+                                                    <ListItemText >
+                                                        <Typography variant="text" className={classes.Listtext} style={{fontSize : '12px' , paddingLeft : '30px'  }}  >All Products</Typography>
+                                                    </ListItemText>
+                                                </Link>
+                                                </ListItemButton>
+                                            </ListItem>
+
+                                            <ListItem  >
+                                                <ListItemButton    className = {
+                                                    classes.listSingle
+                                                } >
+                                                        <Link  to = "/admin/products/AddNew"
+                                                        style = {
+                                                            {
+                                                                textDecoration: 'none'
+                                                            }
+                                                        } >
+                                                    <ListItemText >
+                                                        <Typography variant="text" className={classes.Listtext} style={{fontSize : '12px' , paddingLeft : '30px'  }}  >Add New</Typography>
+                                                    </ListItemText>
+                                                </Link>
+                                                </ListItemButton>
+                                            </ListItem>
+                                    </AccordionDetails>
+                            </Accordion>
+
+                    </List>
 
 
-            </Box>
+                </Box>
         </>
     )
 }

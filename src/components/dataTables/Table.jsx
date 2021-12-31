@@ -6,47 +6,10 @@ import {
 } from '@mui/material'
 import { DataGrid } from '@mui/x-data-grid';
 
-const columns = [
-  { field: 'id', headerName: 'ID', width: 120 },
-  { field: 'firstName', headerName: 'First name', width: 150 },
-  { field: 'lastName', headerName: 'Last name', width: 150 },
-  {
-    field: 'age',
-    headerName: 'Age',
-    type: 'number',
-    width: 110,
-  },
-  {
-    field: 'fullName',
-    headerName: 'Full name',
-    description: 'This column has a value getter and is not sortable.',
-    sortable: false,
-    width: 250,
-    valueGetter: (params) =>
-      `${params.getValue(params.id, 'firstName') || ''} ${
-        params.getValue(params.id, 'lastName') || ''
-      }`,
-  },
-];
-
-const rows = [
-  { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-  { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-  { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-  { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-  { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-  { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-  { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-  { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-];
-
-
-
 const useStyles = makeStyles(() => ({
     root: {
         backgroundColor: '#FFFFFF',
-        paddingTop: '30px',
+        paddingTop: '60px',
         marginLeft: '30px',
         marginTop: '30px',
         marginRight: '70px',
@@ -62,9 +25,10 @@ const useStyles = makeStyles(() => ({
         },
     },
     firstText : {
-        fontSize : '22px',
+        fontSize : '25px',
         fontWeight: 300,
         color: '#333333',
+        marginBottom : '50px',
         paddingLeft: '15px',
         fontFamily: 'Roboto, Helvetica Neue, Arial, sans-serif'
       },
@@ -80,21 +44,22 @@ const useStyles = makeStyles(() => ({
 }))
 
 
-const PieChartComp = () => {
+const PieChartComp = ({columns , rows , title}) => {
     const classes = useStyles();
     return (
         <>
-            <Box className={classes.root} >
-                <Typography variant="text"  className={classes.firstText}>Striped Table with Hover</Typography>
-                <Typography variant="text"  className={classes.subtext}>Here is a subtitle for this tab</Typography>
+            <Box className={classes.root} style={{marginTop: '50px'}} >
+                <Typography variant="text"  className={classes.firstText}>{title}</Typography>
+                {/* <Typography variant="text"  className={classes.subtext}>Here is a subtitle for this tab</Typography> */}
 
-                <Box style={{ height: 400, width: '100%' }}>
+                <Box style={{ height: 400, width: '100%' ,}}>
                     <DataGrid
                         rows={rows}
                         columns={columns}
                         pageSize={5}
                         rowsPerPageOptions={[5]}
                         checkboxSelection
+                        getRowId={r=>r._id}
                     />
                 </Box>
             </Box>

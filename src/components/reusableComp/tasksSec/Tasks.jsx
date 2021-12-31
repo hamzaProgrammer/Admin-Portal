@@ -26,6 +26,12 @@ const useStyles = makeStyles(() => ({
         borderBottom: '1px solid #b2bec3',
         display: 'flex',
         flexDirection: 'column',
+        "@media (max-width: 1366px)": {
+            marginLeft: '-20px',
+        },
+        "@media (max-width: 1024px)": {
+            marginLeft: '-20px',
+        },
         "@media (max-width: 920px)": {
             marginLeft: '0px',
         },
@@ -39,6 +45,7 @@ const useStyles = makeStyles(() => ({
             width : '400px',
             marginTop: '50px'
         },
+        
     },
     miniRoot : {
         display: 'flex',

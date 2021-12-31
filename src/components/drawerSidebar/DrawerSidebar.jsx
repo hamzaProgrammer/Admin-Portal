@@ -7,7 +7,6 @@ import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import MailIcon from '@mui/icons-material/Mail';
 import  { Button , TextField} from '@mui/material';
@@ -25,11 +24,10 @@ import CloseIcon from '@mui/icons-material/Close';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 
 import Sidebar from '../sidebar/Sidebar'
+import {useNavigate} from 'react-router-dom'
 
 const drawerWidth = 230;
 
@@ -155,6 +153,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function PersistentDrawerLeft() {
+  const history = useNavigate();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -256,6 +255,11 @@ export default function PersistentDrawerLeft() {
     </Menu>
   );
 
+    const signOut = () => {
+      localStorage.removeItem("profile");
+      history('/signin')
+    }
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -268,10 +272,10 @@ export default function PersistentDrawerLeft() {
             edge="start"
             sx={{ mr: 2, ...(open && { display: 'none' }) }}
           >
-            <MenuIcon />
+            <MenuIcon  />
           </IconButton>
           <Box className={classes.root} >
-                <SearchIcon onClick={handleClickOpen} />
+                <SearchIcon onClick={handleClickOpen}  style={{fontSize : '22px'}} />
           </Box>
 
 
@@ -281,7 +285,7 @@ export default function PersistentDrawerLeft() {
           <Box sx={{ display: { xs: 'none', md: 'flex' } , marginRight: '35px' }}>
 
 
-            <Button className={classes.btn1} variant="contained" component="span" disableElevation={true} >
+            <Button className={classes.btn1} variant="contained" component="span"  onClick={signOut} disableElevation={true} >
               Logout
             </Button>
           </Box>
@@ -317,7 +321,7 @@ export default function PersistentDrawerLeft() {
       >
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <CloseIcon    style={{color: '#FFFFFF' , backgroundColor: 'crimson' ,  marginRight : '0px', height: '40px' , width : '40px' , borderRadius : '50%'}} /> : <ChevronRightIcon  style={{color: '#FFFFFF' , backgroundColor: '#192a56' ,  marginRight : '80px', height: '40px' , width : '40px' , borderRadius : '50%'}} />}
+            {theme.direction === 'ltr' ? <CloseIcon    style={{ fontSize : '22px' , color: '#FFFFFF' , backgroundColor: 'crimson' ,  marginRight : '0px', borderRadius : '50%'}} /> : <ChevronRightIcon  style={{ fontSize : '22px' , color: '#FFFFFF' , backgroundColor: '#192a56' ,  marginRight : '80px',  borderRadius : '50%'}} />}
           </IconButton>
         </DrawerHeader>
         <Sidebar/>
